@@ -1,27 +1,26 @@
 import React from 'react'
 import { Link } from "react-router-dom"
+import { Fragment } from 'react'
+import {
+    Disclosure,
+    DisclosureButton,
+    DisclosurePanel,
+    Menu,
+    MenuButton,
+    MenuItem,
+    MenuItems,
+    Transition,
+} from '@headlessui/react'
+import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
+import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+
+function classNames(...classes) {
+    return classes.filter(Boolean).join(' ')
+  }
 
 function Navbar() {
     return (
-        <nav>
-            <div className="navbarLogo">
-                <img src="" alt=""></img>
-            </div>
-            <ul>
-                <li>
-                    <Link to="/">Home</Link>
-                </li>
-                <li>
-                    <Link to="/movies">Movies</Link>
-                </li>
-                <li>
-                    <a href="/">Series</a>
-                </li>
-                <li>
-                    <a href="/">Kids</a>
-                </li>
-            </ul>
-        </nav>
+        
     )
 }
 
