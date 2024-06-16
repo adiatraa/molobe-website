@@ -1,0 +1,18 @@
+.heroSection {
+    display: flex;
+    height: 100vh;
+    background-image: url('../../assets/startUp.jpeg');
+    background-size: cover;
+    background-position: center;
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.7);
+}
+
+.leftSide {
+    width: 40%;
+    height: 100%; /* Ensures the left side takes the full height of the hero section */
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    justify-content: center; /* Centers content vertically */
+    
+}

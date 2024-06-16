@@ -1,4 +1,4 @@
-import HomePage from './pages/HomePage.jsx'
+import HomePage from './pages/Home/HomePage.jsx'
 import MoviesPage from './pages/MoviesPage.jsx'
 import WatchlistPage from './pages/WatchlistPage.jsx'
 import {
