@@ -58,7 +58,7 @@ button:focus-visible {
 
 .swiper_container {
   height: 52rem;
-  padding: 2rem 0;
+  padding: 6rem 0;
   position: relative;
   margin-left: 20px;
 }
@@ -96,7 +96,7 @@ button:focus-visible {
 
 .slider-controler {
   position: relative;
-  bottom: 3rem;
+  bottom: -4rem;
   display: flex;
   align-items: center;
   justify-content: center;
