@@ -16,3 +16,8 @@
     justify-content: center; /* Centers content vertically */
     
 }
+
+.rightSide{
+    width: 60%;
+    height: 100%;
+}

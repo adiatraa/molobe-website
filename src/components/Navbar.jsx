@@ -63,7 +63,7 @@ function Navbar() {
                                         <input
                                             id="search"
                                             name="search"
-                                            className="block w-full rounded-md border bg-black/20 bg-black border border-[#7C7C7C] py-1.5 pl-10 pr-3 text-gray-300 placeholder:text-gray-400 focus:bg-white focus:text-gray-900 focus:ring-0 sm:text-sm sm:leading-6"
+                                            className="block w-full rounded-md border bg-black/0 bg-black border border-[#7C7C7C] py-1.5 pl-10 pr-3 text-gray-300 placeholder:text-gray-400 focus:bg-white focus:text-gray-900 focus:ring-0 sm:text-sm sm:leading-6"
                                             placeholder="Search"
                                             type="search"
                                         />
@@ -84,7 +84,7 @@ function Navbar() {
                                 <div className="flex items-center">
                                     <button
                                         type="button"
-                                        className="relative flex-shrink-0 rounded-full bg-black/20 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                                        className="relative flex-shrink-0 rounded-full bg-black/0 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                                     >
                                         <span className="sr-only">View notifications</span>
                                         <BellIcon className="h-6 w-6" aria-hidden="true" />
