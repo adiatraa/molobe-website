@@ -3,6 +3,7 @@ import MainLayout from '../../layout/MainLayout.jsx'
 import styles from '../Home/Home.module.css'
 import ButtonWatchNow from '../../components/ButtonWatchNow.jsx'
 import ButtonHWatchlist from '../../components/ButtonHWatchlist.jsx'
+import SliderHero from '../../components/SliderHero.jsx'
 
 function HomePage() {
     return (
@@ -27,7 +28,7 @@ function HomePage() {
                     </div>
                     <div className={styles.rightSide}>
                         {/* Slider Sweeper JS */}
-                        
+                        <SliderHero></SliderHero>
                     </div>
                 </div>
             </div>
