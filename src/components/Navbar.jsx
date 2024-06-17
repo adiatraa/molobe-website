@@ -63,7 +63,7 @@ function Navbar() {
                                         <input
                                             id="search"
                                             name="search"
-                                            className="block w-full rounded-md border bg-black/0 bg-black border border-[#7C7C7C] py-1.5 pl-10 pr-3 text-gray-300 placeholder:text-gray-400 focus:bg-white focus:text-gray-900 focus:ring-0 sm:text-sm sm:leading-6"
+                                            className="block w-full rounded-md bg-black/0 bg-black border border-[#7C7C7C] py-1.5 pl-10 pr-3 text-gray-300 placeholder:text-gray-400 focus:bg-white focus:text-gray-900 focus:ring-0 sm:text-sm sm:leading-6"
                                             placeholder="Search"
                                             type="search"
                                         />
