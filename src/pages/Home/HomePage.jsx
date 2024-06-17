@@ -6,6 +6,7 @@ import ButtonHWatchlist from '../../components/ButtonHWatchlist.jsx';
 import ButtonWatchlist from '../../components/ButtonWatchlist.jsx';
 import SliderHero from '../../components/SliderHero.jsx';
 import { StarIcon } from '@heroicons/react/20/solid';
+import subscribeImage from '../../assets/subscribe.png';
 
 const subCategories = [
     { name: 'Action', href: '#' },
@@ -170,6 +171,50 @@ function HomePage() {
                         </div>
                     </div>
                 </div>
+                <div className="subscribe mt-24">
+                    <div className="bg-white">
+                        <div
+                            className="relative isolate flex flex-col gap-10 overflow-hidden bg-gray-900 px-6 py-24 shadow-2xl sm:px-24 xl:flex-row xl:items-center xl:py-32"
+                            style={{ backgroundImage: `url(${subscribeImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+                        >
+                            <h2 className="max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl xl:max-w-none xl:flex-auto">
+                                Subscribe our newsletter for newest movies updates
+                            </h2>
+                            <form className="w-full max-w-md">
+                                <div className="flex gap-x-4">
+                                    <label htmlFor="email-address" className="sr-only">
+                                        Email address
+                                    </label>
+                                    <input
+                                        id="email-address"
+                                        name="email"
+                                        type="email"
+                                        autoComplete="email"
+                                        required
+                                        className="min-w-0 flex-auto rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6"
+                                        placeholder="Enter your email"
+                                    />
+                                    <button
+                                        type="submit"
+                                        className="flex-none rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                                    >
+                                        Subscribe
+                                    </button>
+                                </div>
+                                <p className="mt-4 text-sm leading-6 text-gray-300">
+                                    We care about your data. Read our{' '}
+                                    <a href="#" className="font-semibold text-white">
+                                        privacy&nbsp;policy
+                                    </a>
+                                    .
+                                </p>
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </MainLayout>
     );
