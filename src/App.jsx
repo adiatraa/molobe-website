@@ -1,5 +1,5 @@
 import HomePage from './pages/Home/HomePage.jsx'
-import MoviesPage from './pages/MoviesPage.jsx'
+import MoviesPage from './pages/Movies/MoviesPage.jsx'
 import WatchlistPage from './pages/WatchlistPage.jsx'
 import {
   createBrowserRouter,
