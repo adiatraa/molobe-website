@@ -51,6 +51,7 @@ function MoviesPage() {
   }, []);
 
   useEffect(() => {
+    // Conditional Fetch Movie API and Search Movie API
     async function fetchMovie() {
       const endpoint = query
         ? `https://api.themoviedb.org/3/search/movie?api_key=c702b378e1e83ded899503993457e2b2&query=${query}`
@@ -62,6 +63,17 @@ function MoviesPage() {
     }
     fetchMovie();
   }, [query]);
+
+  useEffect(() => {
+    // Clear Search when Reload Page
+    const clearSearchQuery = () => {
+      const newUrl = new URL(window.location.href);
+      newUrl.searchParams.delete('search');
+      navigate(newUrl.pathname + newUrl.search);
+    };
+
+    clearSearchQuery();
+  }, [navigate]);
 
 
   return (
