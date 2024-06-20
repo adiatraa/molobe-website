@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import MainLayout from '../../layout/MainLayout.jsx';
-import styles from '../Movies/Movies.module.css';
 import Breadcrumb from '../../components/Breadcrumb.jsx';
 import { Dialog, DialogPanel, Disclosure, DisclosureButton, DisclosurePanel, Transition, TransitionChild } from '@headlessui/react';
 import { XMarkIcon, ChevronDownIcon, PlusIcon } from '@heroicons/react/20/solid';
@@ -43,6 +42,7 @@ function MoviesPage() {
   const [dataMovie, setDataMovie] = useState(null);
 
   const location = useLocation();
+  const navigate = useNavigate();
   const searchParams = new URLSearchParams(location.search);
   const query = searchParams.get('search');
 
@@ -50,7 +50,6 @@ function MoviesPage() {
     setPages([{ name: 'Movies', href: '/movies', current: true }]);
   }, []);
 
-  //
   useEffect(() => {
     async function fetchMovie() {
       const endpoint = query
@@ -63,6 +62,7 @@ function MoviesPage() {
     }
     fetchMovie();
   }, [query]);
+
 
   return (
     <MainLayout>
@@ -150,8 +150,8 @@ function MoviesPage() {
           <p className="mt-12 font-semibold text-lg">Movies</p>
         </div>
         <main className="ml-[55px] max-w-[2000px] px-4 sm:px-6 lg:max-w-[2000px] lg:px-8">
-          <div className="pt-7 flex flex-col lg:flex-row lg:gap-x-8 xl:gap-x-8 min-h-screen">
-            <aside className="lg:w-1/6 bg-[#151515] p-[40px] rounded-lg h-full">
+          <div className="pt-7 flex flex-col lg:flex-row lg:gap-x-8 xl:gap-x-8 min-h-screen"> {/* Add min-h-screen to the flex container */}
+            <aside className="lg:w-1/6 bg-[#151515] p-[40px] rounded-lg h-full"> {/* Ensure full height with h-full */}
               <h2 className="sr-only">Filters</h2>
               <button
                 type="button"
@@ -190,9 +190,13 @@ function MoviesPage() {
               </div>
             </aside>
             <div className="mt-6 lg:w-3/4 lg:mt-0 xl:w-3/4 space-y-6">
-              {dataMovie?.results?.map((movie, index) => ( 
-                <CardMovie key={index} movie={movie} /> 
-              ))}
+              {dataMovie?.results?.length > 0 ? (
+                dataMovie.results.map((movie, index) => (
+                  <CardMovie key={index} movie={movie} />
+                ))
+              ) : (
+                <p className="text-white">No Movies Found</p>
+              )}
             </div>
           </div>
         </main>
