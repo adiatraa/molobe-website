@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import MainLayout from '../../layout/MainLayout.jsx';
 import Breadcrumb from '../../components/Breadcrumb.jsx';
-import { Dialog, DialogPanel, Disclosure, DisclosureButton, DisclosurePanel, Transition, TransitionChild } from '@headlessui/react';
+import { Dialog, Disclosure, Transition } from '@headlessui/react';
 import { XMarkIcon, ChevronDownIcon, PlusIcon } from '@heroicons/react/20/solid';
 import CardMovie from '../../components/CardMovie.jsx';
 
@@ -51,7 +51,6 @@ function MoviesPage() {
   }, []);
 
   useEffect(() => {
-    // Conditional Fetch Movie API and Search Movie API
     async function fetchMovie() {
       const endpoint = query
         ? `https://api.themoviedb.org/3/search/movie?api_key=c702b378e1e83ded899503993457e2b2&query=${query}`
@@ -65,7 +64,6 @@ function MoviesPage() {
   }, [query]);
 
   useEffect(() => {
-    // Clear Search when Reload Page
     const clearSearchQuery = () => {
       const newUrl = new URL(window.location.href);
       newUrl.searchParams.delete('search');
@@ -75,14 +73,13 @@ function MoviesPage() {
     clearSearchQuery();
   }, [navigate]);
 
-
   return (
     <MainLayout>
       <Breadcrumb pages={pages} />
       <div className="bg-black text-white min-h-screen">
         <Transition show={mobileFiltersOpen}>
           <Dialog className="relative z-40 lg:hidden" onClose={setMobileFiltersOpen}>
-            <TransitionChild
+            <Transition.Child
               enter="transition-opacity ease-linear duration-300"
               enterFrom="opacity-0"
               enterTo="opacity-100"
@@ -91,9 +88,9 @@ function MoviesPage() {
               leaveTo="opacity-0"
             >
               <div className="fixed inset-0 bg-black bg-opacity-75" />
-            </TransitionChild>
+            </Transition.Child>
             <div className="fixed inset-0 z-40 flex">
-              <TransitionChild
+              <Transition.Child
                 enter="transition ease-in-out duration-300 transform"
                 enterFrom="translate-x-full"
                 enterTo="translate-x-0"
@@ -101,7 +98,7 @@ function MoviesPage() {
                 leaveFrom="translate-x-0"
                 leaveTo="translate-x-full"
               >
-                <DialogPanel className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-gray-900 py-4 pb-6 shadow-xl">
+                <Dialog.Panel className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-gray-900 py-4 pb-6 shadow-xl">
                   <div className="flex items-center justify-between px-4">
                     <h2 className="text-lg font-medium text-white">Filters</h2>
                     <button
@@ -119,7 +116,7 @@ function MoviesPage() {
                         {({ open }) => (
                           <fieldset>
                             <legend className="w-full px-2">
-                              <DisclosureButton className="flex w-full items-center justify-between p-2 text-gray-400 hover:text-gray-500">
+                              <Disclosure.Button className="flex w-full items-center justify-between p-2 text-gray-400 hover:text-gray-500">
                                 <span className="text-sm font-medium text-white">{section.name}</span>
                                 <span className="ml-6 flex h-7 items-center">
                                   <ChevronDownIcon
@@ -127,9 +124,9 @@ function MoviesPage() {
                                     aria-hidden="true"
                                   />
                                 </span>
-                              </DisclosureButton>
+                              </Disclosure.Button>
                             </legend>
-                            <DisclosurePanel className="px-4 pb-2 pt-4">
+                            <Disclosure.Panel className="px-4 pb-2 pt-4">
                               <div className="grid grid-cols-2 gap-4">
                                 {section.options.map((option, optionIdx) => (
                                   <div key={option.value} className="flex items-center">
@@ -146,24 +143,24 @@ function MoviesPage() {
                                   </div>
                                 ))}
                               </div>
-                            </DisclosurePanel>
+                            </Disclosure.Panel>
                           </fieldset>
                         )}
                       </Disclosure>
                     ))}
                   </form>
-                </DialogPanel>
-              </TransitionChild>
+                </Dialog.Panel>
+              </Transition.Child>
             </div>
           </Dialog>
         </Transition>
-        <div className="flex gap-[245px]">
-          <p className="ml-24 mt-12 font-semibold text-lg">Filter Option</p>
-          <p className="mt-12 font-semibold text-lg">Movies</p>
+        <div className="flex  items-center mx-4 mt-12 lg:ml-24 lg:gap-[245px]">
+          <p className="font-semibold text-lg">Filter Option</p>
+          <p className="font-semibold text-lg">Movies</p>
         </div>
-        <main className="ml-[55px] max-w-[2000px] px-4 sm:px-6 lg:max-w-[2000px] lg:px-8">
-          <div className="pt-7 flex flex-col lg:flex-row lg:gap-x-8 xl:gap-x-8 min-h-screen"> {/* Add min-h-screen to the flex container */}
-            <aside className="lg:w-1/6 bg-[#151515] p-[40px] rounded-lg h-full"> {/* Ensure full height with h-full */}
+        <main className="mx-4 max-w-full px-4 sm:px-6 lg:mx-[55px] lg:max-w-[2000px] lg:px-8">
+          <div className="pt-7 flex flex-col lg:flex-row lg:gap-x-8 xl:gap-x-8 min-h-screen">
+            <aside className="lg:w-1/6 bg-[#151515] p-4 lg:p-[40px] rounded-lg h-full">
               <h2 className="sr-only">Filters</h2>
               <button
                 type="button"
@@ -201,7 +198,7 @@ function MoviesPage() {
                 </form>
               </div>
             </aside>
-            <div className="mt-6 lg:w-3/4 lg:mt-0 xl:w-3/4 space-y-6">
+            <div className="mt-6 lg:w-5/6 lg:mt-0 xl:w-5/6 space-y-6">
               {dataMovie?.results?.length > 0 ? (
                 dataMovie.results.map((movie, index) => (
                   <CardMovie key={index} movie={movie} />
