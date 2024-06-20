@@ -8,86 +8,33 @@ import CardMovie from '../../components/CardMovie.jsx';
 
 const filters = [
     {
-        id: 'category',
-        name: 'Category',
-        options: [
-            { value: '3d', label: '3D' },
-            { value: 'fantasy', label: 'Fantasy' },
-            { value: 'action', label: 'Action' },
-            { value: 'history', label: 'History' },
-            { value: 'adventure', label: 'Adventure' },
-            { value: 'horror', label: 'Horror' },
-            { value: 'animation', label: 'Animation' },
-            { value: 'mystery', label: 'Mystery' },
-            { value: 'biography', label: 'Biography' },
-            { value: 'romance', label: 'Romance' },
-            { value: 'comedy', label: 'Comedy' },
-            { value: 'scifi', label: 'Sci-fi' },
-            { value: 'crime', label: 'Crime' },
-            { value: 'sport', label: 'Sport' },
-            { value: 'anime', label: 'Anime' },
-            { value: 'drama', label: 'Drama' },
-            { value: 'family', label: 'Family' },
-        ],
+    id: 'category',
+    name: 'Category',
+    options: [
+    { value: '3d', label: '3D' },
+    { value: 'fantasy', label: 'Fantasy' },
+    { value: 'action', label: 'Action' },
+    { value: 'history', label: 'History' },
+    { value: 'adventure', label: 'Adventure' },
+    { value: 'horror', label: 'Horror' },
+    { value: 'animation', label: 'Animation' },
+    { value: 'mystery', label: 'Mystery' },
+    { value: 'biography', label: 'Biography' },
+    { value: 'romance', label: 'Romance' },
+    { value: 'comedy', label: 'Comedy' },
+    { value: 'scifi', label: 'Sci-fi' },
+    { value: 'crime', label: 'Crime' },
+    { value: 'sport', label: 'Sport' },
+    { value: 'anime', label: 'Anime' },
+    { value: 'drama', label: 'Drama' },
+    { value: 'family', label: 'Family' },
+    ],
     },
-];
+    ];
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
 }
-
-const movies = [
-    {
-        title: "Terrible Madness",
-        year: "2018",
-        country: "ENGLAND",
-        duration: "1hr 2min",
-        viewers: "473k",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris",
-        genre: "DRAMA",
-        imageUrl: "https://via.placeholder.com/150x210"
-    },
-    {
-        title: "Mystery Night",
-        year: "2020",
-        country: "USA",
-        duration: "1hr 45min",
-        viewers: "1M",
-        description: "An intriguing mystery unfolds as a detective seeks to uncover the truth behind a series of strange events.",
-        genre: "MYSTERY",
-        imageUrl: "https://via.placeholder.com/150x210"
-    },
-    {
-        title: "Fantasy Adventure",
-        year: "2019",
-        country: "FRANCE",
-        duration: "2hr 10min",
-        viewers: "850k",
-        description: "Join the hero on an epic quest through magical lands and discover the power of friendship and bravery.",
-        genre: "FANTASY",
-        imageUrl: "https://via.placeholder.com/150x210"
-    },
-    {
-        title: "Sci-fi Dreams",
-        year: "2021",
-        country: "JAPAN",
-        duration: "1hr 30min",
-        viewers: "620k",
-        description: "A futuristic tale of advanced technology, space exploration, and the search for new worlds.",
-        genre: "SCI-FI",
-        imageUrl: "https://via.placeholder.com/150x210"
-    },
-    {
-        title: "Comedy Night",
-        year: "2017",
-        country: "CANADA",
-        duration: "1hr 20min",
-        viewers: "500k",
-        description: "A hilarious comedy that will have you laughing from start to finish with its witty humor and quirky characters.",
-        genre: "COMEDY",
-        imageUrl: "https://via.placeholder.com/150x210"
-    }
-];
 
 function MoviesPage() {
     const [pages, setPages] = useState([]);
@@ -97,6 +44,17 @@ function MoviesPage() {
         setPages([
             { name: 'Movies', href: '/movies', current: true },
         ]);
+    }, []);
+
+    const [dataMovie, setDataMovie] = useState(null);
+    useEffect(() => {
+        async function fetchMovie(){
+            const response = await fetch("https://api.themoviedb.org/3/discover/movie?api_key=c702b378e1e83ded899503993457e2b2");
+            let responseJson = await response.json();
+            setDataMovie(responseJson);
+            console.log(responseJson, "<< Response Movie API" + " " + new Date());
+        }
+        fetchMovie();
     }, []);
 
     return (
@@ -228,8 +186,8 @@ function MoviesPage() {
                             </div>
                         </aside>
                         <div className="mt-6 lg:w-3/4 lg:mt-0 xl:w-3/4 space-y-6"> {/* Added space-y-6 to add gap between cards */}
-                            {movies.map((movie, index) => (
-                                <CardMovie key={index} movie={movie} />
+                            {dataMovie?.results?.map((movie, index) => ( // Change to dataMovie?.results?.map
+                                <CardMovie key={index} movie={movie} /> // Changed dataMovie to movie
                             ))}
                         </div>
                     </div>

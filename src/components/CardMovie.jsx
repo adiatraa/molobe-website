@@ -6,26 +6,25 @@ import ButtonWatchlist from '../components/ButtonWatchlist.jsx';
 import styles from '../pages/Movies/Movies.module.css';
 
 const CardMovie = ({ movie }) => {
+    let { poster_path, title, release_date, popularity } = movie;
+    poster_path = "https://image.tmdb.org/t/p/w500" + poster_path;
+
     return (
         <div className="bg-[#202020] p-6 rounded-lg">
             <div className="card flex">
                 <div className="h-[210px] w-[150px] bg-white rounded-2xl overflow-hidden">
-                    <img src={movie.imageUrl} alt={movie.title} className="h-full w-full object-cover" />
+                    <img src={poster_path} alt={title} className="h-full w-full object-cover" />
                 </div>
                 <div className="card-content ml-8 flex-1">
-                    <p className="font-bold text-xl">{movie.title}</p>
+                    <p className="font-bold text-xl">{title}</p>
                     <div className={styles.filmStatus}>
-                        <p>{movie.year}</p>
-                        <p>{movie.country}</p>
-                        <p>{movie.duration}</p>
+                        <p>{release_date}</p>
+                        <p>Popularity: {popularity}</p>
                         <EyeIcon className="h-6 w-6 ml-4" />
-                        <p>{movie.viewers} viewers</p>
+                        <p>{popularity} viewers</p>
                     </div>
                     <div className="filmDescription w-full lg:w-[85%] mt-4">
-                        <p>{movie.description}</p>
-                    </div>
-                    <div className={styles.filmGenre}>
-                        <p>{movie.genre}</p>
+                        <p>{movie.overview}</p>
                     </div>
                 </div>
                 <div className="cardButton flex justify-center items-center gap-6 mr-10">
