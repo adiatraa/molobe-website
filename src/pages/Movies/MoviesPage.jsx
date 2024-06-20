@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import MainLayout from '../../layout/MainLayout.jsx';
 import styles from '../Movies/Movies.module.css';
 import Breadcrumb from '../../components/Breadcrumb.jsx';
+import { EyeIcon, StarIcon } from '@heroicons/react/20/solid';
+import ButtonWatchNow from '../../components/ButtonWatchNow.jsx';
+import ButtonWatchlist from '../../components/ButtonWatchlist.jsx';
 import {
     Dialog,
     DialogPanel,
@@ -52,6 +55,7 @@ function MoviesPage() {
             { name: 'Movies', href: '/movies', current: true },
         ]);
     }, []);
+
 
     return (
         <MainLayout>
@@ -142,9 +146,13 @@ function MoviesPage() {
                     </Dialog>
                 </Transition>
 
-                <main className="ml-[55px] max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-                    <div className="pt-12 lg:grid lg:grid-cols-3 lg:gap-x-8 xl:grid-cols-4">
-                        <aside className="lg:col-span-1 bg-[#151515] p-[40px] rounded-lg">
+                <div className="flex gap-[245px]">
+                    <p className="ml-24 mt-12 font-semibold text-lg">Filter Option</p>
+                    <p className="mt-12 font-semibold text-lg">Movies</p>
+                </div>
+                <main className="ml-[55px] max-w-[2000px] px-4 sm:px-6 lg:max-w-[2000px] lg:px-8">
+                    <div className="pt-7 flex flex-col lg:flex-row lg:gap-x-8 xl:gap-x-8">
+                        <aside className="lg:w-1/6 bg-[#151515] p-[40px] rounded-lg">
                             <h2 className="sr-only">Filters</h2>
 
                             <button
@@ -155,7 +163,6 @@ function MoviesPage() {
                                 <span className="text-sm font-medium text-gray-400">Filters</span>
                                 <PlusIcon className="ml-1 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
                             </button>
-
                             <div className="hidden lg:block">
                                 <form className="space-y-10 divide-y divide-gray-700">
                                     {filters.map((section, sectionIdx) => (
@@ -185,9 +192,33 @@ function MoviesPage() {
                             </div>
                         </aside>
 
-                        {/* Product grid */}
-                        <div className="mt-6 lg:col-span-2 lg:mt-0 xl:col-span-3">
-                            {/* Konten Anda */}
+                        <div className="mt-6 lg:w-3/4 lg:mt-0 xl:w-3/4">
+                            {/* Product Content */}
+                            <div className="bg-[#202020] p-6 rounded-lg">
+                                <div className="card flex">
+                                    <div className="h-[210px] w-[150px] bg-white rounded-2xl"></div>
+                                    <div className="card-content ml-8 flex-1">
+                                        <p className="font-bold text-xl">Terrible Madness</p>
+                                        <div className={styles.filmStatus}>
+                                            <p>2018</p>
+                                            <p>ENGLAND</p>
+                                            <p>1hr 2min</p>
+                                            <EyeIcon className="h-6 w-6 ml-4" />
+                                            <p>473k viewers</p>
+                                        </div>
+                                        <div className="filmDescription w-full lg:w-[85%] mt-4">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris </p>
+                                        </div>
+                                        <div className={styles.filmGenre}>
+                                            <p>DRAMA</p>
+                                        </div>
+                                    </div>
+                                    <div className="cardButton flex justify-center items-center gap-6 mr-10">
+                                        <ButtonWatchlist />
+                                        <ButtonWatchNow />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </main>
