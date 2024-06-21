@@ -28,7 +28,7 @@ const CardMovie = ({ movie }) => {
                     </div>
                 </div>
                 <div className="cardButton flex justify-center items-center gap-6 mr-10">
-                    <ButtonFavorite />
+                    <ButtonFavorite movie={movie} />
                     <ButtonWatchNow />
                 </div>
             </div>
