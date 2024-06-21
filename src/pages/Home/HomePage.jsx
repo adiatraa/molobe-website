@@ -3,7 +3,7 @@ import MainLayout from '../../layout/MainLayout.jsx';
 import styles from '../Home/Home.module.css';
 import ButtonWatchNow from '../../components/ButtonWatchNow.jsx';
 import ButtonHWatchlist from '../../components/ButtonHWatchlist.jsx';
-import ButtonWatchlist from '../../components/ButtonFavorite.jsx';
+import ButtonFavorite from '../../components/ButtonFavorite.jsx';
 import SliderHero from '../../components/SliderHero.jsx';
 import { StarIcon } from '@heroicons/react/20/solid';
 import subscribeImage from '../../assets/subscribe.png';
@@ -226,7 +226,7 @@ function HomePage() {
                                             </div>
                                         </div>
                                         <div className={styles.cardWatchlist}>
-                                            <ButtonWatchlist />
+                                            <ButtonFavorite movie={movie} />
                                         </div>
                                     </div>
                                 );
@@ -359,7 +359,7 @@ function HomePage() {
                                         </p>
                                     </div>
                                     <div className="mt-2">
-                                        <ButtonWatchlist />
+                                        <ButtonFavorite movie={movie} />
                                     </div>
                                 </div>
                             );

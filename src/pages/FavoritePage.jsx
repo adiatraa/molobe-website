@@ -39,7 +39,7 @@ function classNames(...classes) {
 function FavoritePage() {
   const [pages, setPages] = useState([]);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
-  const [dataMovie, setDataMovie] = useState(null);
+  const [favoriteMovies, setFavoriteMovies] = useState([]);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -47,7 +47,7 @@ function FavoritePage() {
   const query = searchParams.get('search');
 
   useEffect(() => {
-    setPages([{ name: 'Movies', href: '/movies', current: true }]);
+    setPages([{ name: 'Favorite', href: '/favorite', current: true }]);
   }, []);
 
   useEffect(() => {
@@ -72,6 +72,11 @@ function FavoritePage() {
 
     clearSearchQuery();
   }, [navigate]);
+
+  useEffect(() => {
+    const favoriteList = JSON.parse(localStorage.getItem('favoriteList')) || [];
+    setFavoriteMovies(favoriteList);
+  }, []);
 
   return (
     <MainLayout>
@@ -199,8 +204,8 @@ function FavoritePage() {
               </div>
             </aside>
             <div className="mt-6 lg:w-5/6 lg:mt-0 xl:w-5/6 space-y-6">
-              {dataMovie?.results?.length > 0 ? (
-                dataMovie.results.map((movie, index) => (
+              {favoriteMovies?.length > 0 ? (
+                favoriteMovies.map((movie, index) => (
                   <CardMovie key={index} movie={movie} />
                 ))
               ) : (
