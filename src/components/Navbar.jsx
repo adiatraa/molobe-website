@@ -17,7 +17,7 @@ function Navbar() {
   const links = [
     { name: 'Home', to: '/' },
     { name: 'Movies', to: '/movies' },
-    { name: 'Watchlist', to: '/watchlist' },
+    { name: 'Favorite', to: '/favorite' },
   ];
 
   const handleSearchChange = (e) => {

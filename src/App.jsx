@@ -1,6 +1,6 @@
 import HomePage from './pages/Home/HomePage.jsx'
 import MoviesPage from './pages/Movies/MoviesPage.jsx'
-import WatchlistPage from './pages/WatchlistPage.jsx'
+import FavoritePage from './pages/FavoritePage.jsx'
 import {
   createBrowserRouter,
   RouterProvider,
@@ -16,8 +16,8 @@ const router = createBrowserRouter([
     element: <MoviesPage/>,
   },
   {
-    path: "/watchlist",
-    element: <WatchlistPage/>
+    path: "/favorite",
+    element: <FavoritePage/>
   },
 ]);
 

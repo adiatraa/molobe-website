@@ -4,6 +4,13 @@ import { HeartIcon } from '@heroicons/react/20/solid'
 const ButtonWatchlist = () => {
   const [loved, setLoved] = useState(false);
 
+  useEffect(() =>{
+    const favoriteList = JSON.parse(localStorage.getItem('favoriteList')) || [];
+    const isFavorite = favoriteList.some((favMovie) => favMovie.id == movie.id);
+    setLoved(isFavorite);
+  }, [movie.id]);
+
+
   return (
     <button
       onClick={() => setLoved(!loved)}

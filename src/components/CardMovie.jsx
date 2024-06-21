@@ -2,7 +2,7 @@
 import React from 'react';
 import { EyeIcon } from '@heroicons/react/20/solid';
 import ButtonWatchNow from '../components/ButtonWatchNow.jsx';
-import ButtonWatchlist from '../components/ButtonWatchlist.jsx';
+import ButtonFavorite from './ButtonFavorite.jsx';
 import styles from '../pages/Movies/Movies.module.css';
 
 const CardMovie = ({ movie }) => {
@@ -28,7 +28,7 @@ const CardMovie = ({ movie }) => {
                     </div>
                 </div>
                 <div className="cardButton flex justify-center items-center gap-6 mr-10">
-                    <ButtonWatchlist />
+                    <ButtonFavorite />
                     <ButtonWatchNow />
                 </div>
             </div>
